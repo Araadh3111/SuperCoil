@@ -1,0 +1,53 @@
+<svg width="760" height="520" viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" font-family="Menlo,Consolas,monospace">
+  <rect width="760" height="520" rx="14" fill="#0B0E14"/>
+  <text x="28" y="44" fill="#E6B450" font-size="22" font-weight="700">System Architecture</text>
+  <text x="28" y="66" fill="#6B7280" font-size="13">STM32 reads 4 sensors, fires 4 coils in sequence, runs 3 game modes.</text>
+
+  <!-- MCU center -->
+  <rect x="310" y="210" width="150" height="100" rx="10" fill="#11161F" stroke="#E6B450" stroke-width="2"/>
+  <text x="385" y="250" fill="#E6B450" font-size="16" text-anchor="middle" font-weight="700">STM32F103</text>
+  <text x="385" y="272" fill="#9CA3AF" font-size="12" text-anchor="middle">Blue Pill</text>
+  <text x="385" y="292" fill="#6B7280" font-size="11" text-anchor="middle">timers + EXTI</text>
+
+  <!-- Coils (right) -->
+  <g>
+    <rect x="600" y="120" width="130" height="60" rx="8" fill="#11161F" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="665" y="146" fill="#60A5FA" font-size="12" text-anchor="middle">Coil driver ×4</text>
+    <text x="665" y="164" fill="#6B7280" font-size="10" text-anchor="middle">MOSFET + flyback</text>
+    <line x1="460" y1="240" x2="600" y2="150" stroke="#60A5FA" stroke-width="1.6"/>
+    <text x="500" y="188" fill="#6B7280" font-size="10">4× PWM out</text>
+    <rect x="600" y="200" width="130" height="60" rx="8" fill="#11161F" stroke="#60A5FA" stroke-width="1.8"/>
+    <text x="665" y="234" fill="#60A5FA" font-size="12" text-anchor="middle">4 × COILS</text>
+    <line x1="665" y1="180" x2="665" y2="200" stroke="#60A5FA" stroke-width="1.6"/>
+  </g>
+
+  <!-- Sensors (left) -->
+  <g>
+    <rect x="30" y="200" width="150" height="60" rx="8" fill="#11161F" stroke="#34D399" stroke-width="1.8"/>
+    <text x="105" y="226" fill="#34D399" font-size="12" text-anchor="middle">4 × TCRT5000</text>
+    <text x="105" y="244" fill="#6B7280" font-size="10" text-anchor="middle">IR position sensors</text>
+    <line x1="180" y1="235" x2="310" y2="250" stroke="#34D399" stroke-width="1.6"/>
+    <text x="205" y="232" fill="#6B7280" font-size="10">4× EXTI in</text>
+  </g>
+
+  <!-- Display (top) -->
+  <g>
+    <rect x="310" y="90" width="150" height="55" rx="8" fill="#11161F" stroke="#C084FC" stroke-width="1.8"/>
+    <text x="385" y="116" fill="#C084FC" font-size="12" text-anchor="middle">Round display</text>
+    <text x="385" y="133" fill="#6B7280" font-size="10" text-anchor="middle">mode select / speed</text>
+    <line x1="385" y1="145" x2="385" y2="210" stroke="#C084FC" stroke-width="1.6"/>
+    <text x="392" y="180" fill="#6B7280" font-size="10">SPI / I2C</text>
+  </g>
+
+  <!-- Power (bottom) -->
+  <g>
+    <rect x="310" y="380" width="150" height="60" rx="8" fill="#11161F" stroke="#E6B450" stroke-width="1.8"/>
+    <text x="385" y="406" fill="#E6B450" font-size="12" text-anchor="middle">12V supply</text>
+    <text x="385" y="424" fill="#6B7280" font-size="10" text-anchor="middle">PSU / LiPo, ≥10A</text>
+    <line x1="385" y1="310" x2="385" y2="380" stroke="#E6B450" stroke-width="1.6" stroke-dasharray="4 4"/>
+    <text x="392" y="350" fill="#6B7280" font-size="10">shared GND</text>
+  </g>
+
+  <!-- fire loop caption -->
+  <text x="28" y="490" fill="#9CA3AF" font-size="12">Core loop: ball breaks IR beam → coil fires → timer cuts at coil center → ball coasts to next coil → repeat.</text>
+</svg>
